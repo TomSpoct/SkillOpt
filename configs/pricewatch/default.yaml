@@ -1,0 +1,42 @@
+_base_: ../_base_/default.yaml
+
+model:
+  backend: openai_compatible
+  optimizer: deepseek-v4-pro
+  target: deepseek-v4-flash
+  optimizer_backend: openai_compatible
+  target_backend: openai_compatible
+  reasoning_effort: medium
+
+train:
+  train_size: 0
+  batch_size: 4
+  accumulation: 1
+  num_epochs: 2
+
+gradient:
+  minibatch_size: 2
+  merge_batch_size: 2
+  analyst_workers: 2
+  failure_only: false
+
+optimizer:
+  learning_rate: 2
+  lr_scheduler: constant
+
+evaluation:
+  use_gate: true
+  sel_env_num: 0
+  test_env_num: 0
+  eval_test: true
+
+env:
+  name: pricewatch
+  skill_init: skillopt/envs/pricewatch/skills/initial.md
+  split_mode: split_dir
+  split_dir: data/pricewatch_split
+  data_path: ""
+  split_output_dir: ""
+  max_completion_tokens: 2048
+  workers: 2
+  limit: 0

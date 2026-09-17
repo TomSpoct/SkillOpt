@@ -88,6 +88,8 @@ def _register_builtins() -> None:
     try:
         from skillopt.envs.officeqa.adapter import OfficeQAAdapter
         _ENV_REGISTRY["officeqa"] = OfficeQAAdapter
+        from skillopt.envs.pricewatch.adapter import PriceWatchAdapter
+        _ENV_REGISTRY["pricewatch"] = PriceWatchAdapter
     except ImportError:
         pass
     try:
